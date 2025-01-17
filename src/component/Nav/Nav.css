@@ -1,0 +1,39 @@
+/*01 BS Nav Modified */
+   .navbar{
+    --bs-navbar-toggler-border-color: none;
+    --bs-navbar-toggler-border-radius:none;
+    --bs-navbar-toggler-focus-width:0;
+    --bs-navbar-toggler-font-size:1.5rem;
+   }
+ 
+
+/* Homenav-bar modified */
+.homenav-bar{
+    display: flex;
+    flex-direction: row;
+    padding: 0;
+    margin: 0;
+    align-content: center;
+    justify-content: space-around;
+    min-width:70%;
+}
+
+.homenav-item{
+    list-style: none;
+}
+
+.homenav-link{
+    text-decoration: none;
+    color: black;
+    font-size: 1.3rem;
+    font-weight: 500;
+     padding: 0 10px 2px ; 
+}
+
+.homenav-link:hover{
+   border-bottom: 3px solid #FA6C00;
+}
+
+.linkactive{
+    border-bottom: 3px solid #FA6C00;
+}
