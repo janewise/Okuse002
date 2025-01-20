@@ -25,50 +25,56 @@
 //     )
 
 // }
-
-import React,{useEffect, useState} from "react";
-import { Link,NavLink,useNavigate } from "react-router-dom"; // Import Link from react-router-dom
+import React, { useEffect, useState } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
 import { onAuthStateChanged, User, signOut } from "firebase/auth";
-import { auth } from "../../../firebase";
+import { doc, getDoc } from "firebase/firestore";
+import { auth, db } from "./../../../firebase/firebase"; // Combine imports
 import "./navlinks.css";
 
-
 export function Navlink() {
-
-  const [user, setUser] = useState<User | null>(null); // Use the imported User type
+  const [usernameId, setUsernameId] = useState<string | null>(null);
+  const [user, setUser] = useState<User | null>(null);
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Listen for changes to the user's sign-in state
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      setUser(user);
+    // Combined onAuthStateChanged to avoid multiple listeners
+    const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
+      setUser(currentUser);
+      if (currentUser) {
+        try {
+          const userRef = doc(db, "users", currentUser.uid);
+          const snapshot = await getDoc(userRef);
+          if (snapshot.exists()) {
+            const userData = snapshot.data();
+            setUsernameId(userData.UsernameId || null);
+          } else {
+            console.error("User data not found.");
+          }
+        } catch (error) {
+          console.error("Error fetching user data:", error);
+        }
+      }
     });
 
-    // Clean up the listener on unmount
     return () => unsubscribe();
   }, []);
 
-
-//LogOut
-const handleLogout = async () => {
-  await signOut(auth);
-  navigate("/");
-};
+  const handleLogout = async () => {
+    await signOut(auth);
+    navigate("/");
+  };
 
   return (
     <div className="offcanvas-body">
       <ul className="navbar-nav justify-content-end flex-grow-1 pe-3">
         <li>
-        {user ? (
-              <NavLink to="/profile">
-                <button className="profile-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="white" className="bi bi-person-circle" viewBox="0 0 16 16">
-  <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
-  <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
-</svg>
-                </button>
-              </NavLink>
-            ) : (<></>)}
+          {user && (
+            <button className="profile-icon" aria-label="Profile">
+               <i className="bi bi-person-circle"></i>
+              <span className="username_show"> {usernameId}</span>
+            </button>
+          )}
         </li>
         <li className="nav-item">
           <a href="/" className="nav-link">
@@ -83,23 +89,30 @@ const handleLogout = async () => {
         <li className="nav-item">
           <a href="/shop" className="nav-link">
             Shop
-          </a>{" "}
+          </a>
         </li>
         <li className="nav-item">
           <a href="/wishlist" className="nav-link">
             Wishlist
           </a>
         </li>
+        <li className="nav-item">
+          
+        </li>
         <li>
-        {user ? (
-               <button className="btn btn-logout" onClick={handleLogout}>
-               Logout
-             </button>
-            ) : (
-              <a href="/signin">
-                <button className="Login">Login</button>
-              </a>
-            )}
+          {user ? (
+            <button
+              className="btn btn-logout"
+              onClick={handleLogout}
+              aria-label="Logout"
+            >
+              Logout
+            </button>
+          ) : (
+            <NavLink to="/signin">
+              <button className="login-btn">Sign In</button>
+            </NavLink>
+          )}
         </li>
       </ul>
     </div>

@@ -7,15 +7,29 @@
 }
 
 .nav-link{
-    color: black;
+    color:var(--offcanvas-links-text);
     font-size: 1.3rem;
 }
 
+
 /* Login */
-.Login{
+.login-btn{
     background-color: #fa6c00;
     padding: 5px 25px;
     color: #fff;
     border:1px solid;
     border-radius: 5px;
+}
+
+/*  prifile icon*/
+.profile-icon{
+    border: none;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+}
+
+.profile-icon i{
+   font-size: 1.5rem;
+    color: #fa6c00;
 }

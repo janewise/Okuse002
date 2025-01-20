@@ -1,33 +1,4 @@
-.SignUp-main{
-    width: 100%;
-    min-height: 100vh;
-    background-image:url("./imguser/loginbg.png");
-    background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
 
-.signUp-container{
-width:500px;
-padding: 20px;
-background-color: #322f2f79;
-backdrop-filter: blur(10px);
--webkit-backdrop-filter: blur(10px);
-display: flex;
-text-align: center;
-justify-content: center;
-flex-direction: column;
-border-radius: 20px;
-}
-
-.signUp-container h2{
-  margin-bottom: 2rem;
-    }
-    
 
 .Up-form-group input[type="password"],
 .Up-form-group input[type="text"],
@@ -49,7 +20,7 @@ margin: 0;
 
 .Up-form-group input{
     color: #FA6C00;
-    width: 70%;
+    width: 80%;
     padding: 5px 10px;
     margin-bottom: 1.5rem;
     font-size: 1.2rem;
@@ -72,34 +43,7 @@ margin: 0;
 
 
 .signupbtn{
-    margin-bottom: 1.5rem;
-
-}
-
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.7);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-}
-
-.modal-overlay .modal-content h3 {
-  margin-bottom: 10px;
-  color: red;
-}
-
-.modal-overlay .modal-content p {
-  margin-bottom: 20px;
-}
-
-
-.signupbtn{
+  border: 1px solid #FA6C00;
   margin-bottom: 1.5rem;
   color: #000000;
   background-color: #ffffff;
@@ -109,8 +53,38 @@ color: #ffffff;
 background-color: #FA6C00;
 }
 
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgb(54, 54, 54);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
 
-/*  */
+
+.modal-overlay .modal-content h3 {
+  margin-bottom: 10px;
+  color: red;
+}
+
+.modal-overlay .modal-content p {
+  margin-bottom: 20px;
+  color: #ccc;
+}
+
+
+
+/*vertification cancel-btn */
+.cancel-btn{
+  width: 60%;
+}
+
+/* signup cancel */
 .cancel{
   position:absolute;
   top: 0%;

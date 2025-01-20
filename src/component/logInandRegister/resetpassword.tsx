@@ -3,9 +3,9 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { signInWithEmailAndPassword, sendPasswordResetEmail } from "firebase/auth";
-import { auth } from "../../firebase";
+import { auth } from "../../firebase/firebase";
 import { NavLink } from "react-router-dom";
-import "./Signin.css";
+import "./Login.css";
 
 export function Resetpass() {
   const [email, setEmail] = useState("");
@@ -52,15 +52,15 @@ export function Resetpass() {
 
         <p className="forgot-password" style={{ marginTop: '10px' }}>
           <button onClick={handleResetPassword} className=" reset-password-btn">
-            Send Link
+            Send Link to Reset Password
           </button>
         </p>
 
-        <p className="signinbtn">
-          Don't have an account? <NavLink to="/signup">Sign Up</NavLink>
+        <p className="Signupmalar">
+          Don't have an account? <NavLink to="/signup" className={"Signupmar"}>Sign Up</NavLink>
         </p>
-        <p className="signinbtn">
-          Already have an account? <NavLink to="/signin">Sign In</NavLink>
+        <p className="Signupmalar">
+          Already have an account? <NavLink to="/signin" className={"Signupmar"}>LogIn</NavLink>
         </p>
         
       </div>
