@@ -33,3 +33,6 @@
    font-size: 1.5rem;
     color: #fa6c00;
 }
+.username_show{
+    color: var(--offcanvas-links-text);
+}

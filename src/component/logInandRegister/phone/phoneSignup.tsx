@@ -407,74 +407,75 @@ export function PhoneSignUp() {
   const auth = getAuth(); // Initialize Firebase Auth
 
   // Initialize Recaptcha
-  const initializeRecaptcha = () => {
-    if (!window.recaptchaVerifier) {
-      window.recaptchaVerifier = new RecaptchaVerifier(
-        "recaptcha-container", // Container ID
-        {
-          size: "invisible",
-          callback: () => {
-            console.log("Recaptcha verified");
-          },
-        },
-        auth // Ensure the correct `auth` instance is passed here
-      );
-    }
-  };
+  // const initializeRecaptcha = () => {
+  //   if (!window.recaptchaVerifier) {
+  //     window.recaptchaVerifier = new RecaptchaVerifier(
+  //       "recaptcha-container", // Container ID
+  //       {
+  //         size: "invisible",
+  //         callback: () => {
+  //           console.log("Recaptcha verified");
+  //         },
+  //       },
+  //       auth // Ensure the correct `auth` instance is passed here
+  //     );
+  //   }
+  // };
 
-  const handlePhoneSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    if (!phone || !username || !password) {
-      alert("Please fill in all the fields");
-      return;
-    }
+  // const handlePhoneSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  //   e.preventDefault();
+  //   if (!phone || !username || !password) {
+  //     alert("Please fill in all the fields");
+  //     return;
+  //   }
 
-    initializeRecaptcha();
-    const appVerifier = window.recaptchaVerifier;
+  //   initializeRecaptcha();
+  //   const appVerifier = window.recaptchaVerifier;
 
-    try {
-      const confirmationResult = await signInWithPhoneNumber(
-        auth,
-        `+${phone}`,
-        appVerifier
-      );
-      setVerificationId(confirmationResult.verificationId);
-      setIsOtpSent(true);
-    } catch (error) {
-      console.error("Error sending OTP:", error);
-      alert("Failed to send OTP. Please try again.");
-    }
-  };
+  //   try {
+  //     const confirmationResult = await signInWithPhoneNumber(
+  //       auth,
+  //       `+${phone}`,
+  //       appVerifier
+  //     );
+  //     setVerificationId(confirmationResult.verificationId);
+  //     setIsOtpSent(true);
+  //   } catch (error) {
+  //     console.error("Error sending OTP:", error);
+  //     alert("Failed to send OTP. Please try again.");
+  //   }
+  // };
 
-  const handleOtpSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    if (!otp) {
-      alert("Please enter the OTP");
-      return;
-    }
+  // const handleOtpSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  //   e.preventDefault();
+  //   if (!otp) {
+  //     alert("Please enter the OTP");
+  //     return;
+  //   }
 
-    if (!verificationId) {
-      alert("Verification ID is missing. Please request a new OTP.");
-      return;
-    }
+  //   if (!verificationId) {
+  //     alert("Verification ID is missing. Please request a new OTP.");
+  //     return;
+  //   }
 
-    try {
-      const credential = PhoneAuthProvider.credential(verificationId, otp);
-      await signInWithCredential(auth, credential);
-      console.log("User verified and logged in successfully");
-      navigate("/Login");
-    } catch (error) {
-      console.error("Error verifying OTP:", error);
-      alert("Invalid OTP. Please try again.");
-    }
-  };
+  //   try {
+  //     const credential = PhoneAuthProvider.credential(verificationId, otp);
+  //     await signInWithCredential(auth, credential);
+  //     console.log("User verified and logged in successfully");
+  //     navigate("/Login");
+  //   } catch (error) {
+  //     console.error("Error verifying OTP:", error);
+  //     alert("Invalid OTP. Please try again.");
+  //   }
+  // };
 
   return (
     <>
       <div id="recaptcha-container"></div>
       <div className="phonenum_inputbox">
         {!isOtpSent ? (
-          <form className="phsignup-form" onSubmit={handlePhoneSubmit}>
+          // <form className="phsignup-form" onSubmit={handlePhoneSubmit}>
+              <form className="phsignup-form">
             <PhoneInput
               country={"us"}
               value={phone}
@@ -513,7 +514,8 @@ export function PhoneSignUp() {
             </button>
           </form>
         ) : (
-          <form className="otp-verification-form" onSubmit={handleOtpSubmit}>
+          // <form className="otp-verification-form" onSubmit={handleOtpSubmit}>
+            <form className="otp-verification-form" >
             <div className="optinpt_box">
               <OtpInput
                 value={otp}

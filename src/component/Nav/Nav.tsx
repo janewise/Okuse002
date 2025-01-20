@@ -307,7 +307,7 @@ export function Nav() {
         <div>
           {/* Display Okuse Coin with commas */}
           <span className="okuseshow">
-            {okuseCoin !== null ? okuseCoin.toLocaleString() : "..."}{" "}
+            {okuseCoin !== null ? okuseCoin.toLocaleString() : "00,000"}{" "}
             <i className="bi bi-coin"></i>
           </span>
 
