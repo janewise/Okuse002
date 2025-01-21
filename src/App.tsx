@@ -58,7 +58,7 @@ import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Routes, useLocation } from "react-router-dom";
 import { Nav } from "./component/Nav/Nav";
 // Pages
-import { Home } from "./component/Home/home";
+import { Home } from "./component/Home/Home";
 import { Shop } from "./component/Shop/shop";
 import { TopUp } from "./component/TopUp/topup";
 import { WhishList } from "./component/Wishlist/wishlist";
@@ -68,10 +68,13 @@ import { LogIn } from "./component/logInandRegister/Login";
 import { SignUp } from "./component/logInandRegister/Signup";
 import { Resetpass } from "./component/logInandRegister/resetpassword";
 import "./App.css";
+import { More } from "./component/More/More";
+import { Homelink } from "./component/Nav/homelink/homelink";
 
 function App() {
   const location = useLocation();
   const isAuthPage = ["/signin", "/signup", "/resetpass"].includes(location.pathname);
+  const isAuthPagetwo = ["/signin", "/signup", "/resetpass","/more"].includes(location.pathname);
   const [theme, setTheme] = useState<"light" | "dark">("light");
 
   const toggleTheme = () => {
@@ -80,16 +83,21 @@ function App() {
 
   return (
     <div className={`app ${theme}`}>
-      {!isAuthPage && <Nav />}
+      {!isAuthPage && <Nav /> }
+      {!isAuthPagetwo && <Homelink/> }
       <Routes>
+        {/* user */}
         <Route path="/profile" element={<Userprofile />} />
         <Route path="/signin" element={<LogIn />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/resetpass" element={<Resetpass />} />
+        {/* Nav */}
         <Route path="/" element={<Home />} />
         <Route path="/shop" element={<Shop />} />
         <Route path="/topup" element={<TopUp />} />
         <Route path="/wishlist" element={<WhishList />} />
+        {/* More */}
+        <Route path="/more" element={<More />} />
       </Routes>
     </div>
   );

@@ -1,7 +1,7 @@
 
 import React, { useState } from "react";
 import { useNavigate, NavLink } from "react-router-dom";
-import Login_title from "./imguser/login.png"
+import Login_title from "./regi_img/login.png"
 import { EmaillogIn } from "./email/emailLogin";
 import {PhonelogIn} from "./phone/phoneLogin"
 import "./Login.css";

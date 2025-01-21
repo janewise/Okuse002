@@ -406,7 +406,7 @@ export function PhoneSignUp() {
   const navigate = useNavigate();
   const auth = getAuth(); // Initialize Firebase Auth
 
-  // Initialize Recaptcha
+  // // Initialize Recaptcha
   // const initializeRecaptcha = () => {
   //   if (!window.recaptchaVerifier) {
   //     window.recaptchaVerifier = new RecaptchaVerifier(
@@ -474,8 +474,8 @@ export function PhoneSignUp() {
       <div id="recaptcha-container"></div>
       <div className="phonenum_inputbox">
         {!isOtpSent ? (
-          // <form className="phsignup-form" onSubmit={handlePhoneSubmit}>
-              <form className="phsignup-form">
+          //  <form className="phsignup-form" onSubmit={handlePhoneSubmit}>
+               <form className="phsignup-form"> 
             <PhoneInput
               country={"us"}
               value={phone}
@@ -514,8 +514,8 @@ export function PhoneSignUp() {
             </button>
           </form>
         ) : (
-          // <form className="otp-verification-form" onSubmit={handleOtpSubmit}>
-            <form className="otp-verification-form" >
+          //  <form className="otp-verification-form" onSubmit={handleOtpSubmit}>
+             <form className="otp-verification-form" > 
             <div className="optinpt_box">
               <OtpInput
                 value={otp}

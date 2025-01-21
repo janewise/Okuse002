@@ -32,7 +32,7 @@ import { doc, getDoc } from "firebase/firestore";
 import { auth, db } from "./../../../firebase/firebase"; // Combine imports
 import "./navlinks.css";
 
-export function Navlink() {
+export function Navlinks() {
   const [usernameId, setUsernameId] = useState<string | null>(null);
   const [user, setUser] = useState<User | null>(null);
   const navigate = useNavigate();

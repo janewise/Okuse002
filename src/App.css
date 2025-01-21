@@ -9,6 +9,7 @@
     --offcavas-open--:#ffffff85;
     --light-dark-toggle-icon:#fa6c00;
     --navbar-togglerbg:none;
+    --homesearchbar-icon_text:#fff;
   }
   
   /* Variables for dark theme */
@@ -22,6 +23,7 @@
     --offcavas-open--:#353535b7;
     --navbar-togglerbg:#fff;
   --light-dark-toggle-icon:#fff;
+  --homesearchbar-icon_text:#000000;
   }
 
   

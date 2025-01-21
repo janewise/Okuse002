@@ -35,7 +35,7 @@
     text-decoration: none;
     color:var(--home-nav-linkicon);
     font-size:1.4rem;
-     padding: 0 10px 2px ; 
+     padding: 2px 10px 2px ; 
      border-radius: 5px;
      border:2px solid var( --home-nav-linkborder);
      background-color: var(--home-nav-linkbg);

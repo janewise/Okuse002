@@ -217,7 +217,7 @@
 
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import Signup_title from "./imguser/signup.png";
+import Signup_title from "./regi_img/signup.png";
 import { EmailsignUp } from "./email/emailSignup";
 import { PhoneSignUp } from "./phone/phoneSignup";
 import "./Signup.css";
